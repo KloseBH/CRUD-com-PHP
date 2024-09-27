@@ -2,16 +2,15 @@
     $hostname = "localhost";
     $port = "5432";
     $dbname = "ContatosDB";
-    $user = "postgre";
+    $user = "postgres";
     $password = "123";
 
-    $conn_string = "host=$hostname port=$port dbname=$dbname user=$user password=$password";
-    
-    $connection = pg_connect($conn_string);
-    
-    if (!$connection) {
-        echo "Erro na conexão: " . pg_last_error();
-    } else {
+    try {
+        $dsn = "pgsql:host=$hostname;port=$port;dbname=$dbname;";
+        $connection = new PDO($dsn, $user, $password);
+        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "Conexão bem-sucedida!";
+    } catch (PDOException $e) {
+        echo "Erro na conexão: " . $e->getMessage();
     }
 ?>

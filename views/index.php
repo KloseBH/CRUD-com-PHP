@@ -2,7 +2,7 @@
   require_once "./controllers/ContactController.php";
   require_once "./config/database.php";
 
-  $contacts
+  $contacts;
 
 ?>
 
