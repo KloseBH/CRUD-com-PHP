@@ -19,6 +19,10 @@
             return $this->contactModel->read();
         }
 
+        public function readOne($id){
+            return $this->contactModel->readOne($id);
+        }
+
         public function update($nome, $email, $telefone, $id){
             $this->contactModel->update($nome, $email, $telefone, $id);
             header('Location /CRUD-COM-PHP/views/index.php');

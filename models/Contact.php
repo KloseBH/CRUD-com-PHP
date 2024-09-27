@@ -17,6 +17,12 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
+        public function readOne($id){
+            $stmt = $this->connection->prepare("SELECT * FROM contatos WHERE id = :id");
+            $stmt->execute(['id'=>$id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
         public function update($nome, $email, $telefone, $id){
             $stmt = $this->connection->prepare("UPDATE contatos SET nome = :nome, email = :email, telefone = :telefone WHERE id = :id");
             $stmt->execute(['nome'=>$nome, 'email'=>$email, 'telefone'=>$telefone,'id'=>$id]);

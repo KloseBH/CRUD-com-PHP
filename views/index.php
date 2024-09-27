@@ -2,8 +2,8 @@
   require_once "./controllers/ContactController.php";
   require_once "./config/database.php";
 
-  $contacts;
-
+  $controller = new ContactController($connection);
+  $contatos = $controller->read();
 ?>
 
 <!DOCTYPE html>
@@ -23,12 +23,20 @@
     </header>
 
     <main>
-        <?php 
-        /*
-            foreach($contact in $contacts){
-
-            }*/
-        ?>
+        <h1>Adicionar Novo Contato</h1>
+        <form action="/views/create.php" method="POST">
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="telefone" placeholder="Telefone" required>
+            <button type="submit">adicionar</button>  
+        </form>
+        <?php foreach($contatos as $contato): ?>
+            <li>
+                <?= htmlspecialchars($contato['nome'])?> - <?= htmlspecialchars($contato['email'])?> - <?= htmlspecialchars($contato['telefone'])?>
+                <a href="./edit.php?id=<?= $contato['id']?>">editar</a>
+                <a href="/controllers/ContactController.php?action=delete&id=<?= $contato['id']?>">excluir</a>
+            </li>
+        <?php endforeach ?>
     </main>
 </body>
 </html>
