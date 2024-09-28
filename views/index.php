@@ -39,7 +39,7 @@ $linha = 0;
         <div class="container mb-5 rounded">
             <div class="row justify-content-center">
                 <div class="col-md-4 shadow-lg bg-white">
-                    <div class="row bg-dark text-light">
+                    <div class="row bg-dark text-light text-center">
                         <h1>NOVO CONTATO</h1>
                     </div>
                     <div class="row">
@@ -56,7 +56,9 @@ $linha = 0;
                                 <label>TELEFONE</label><br>
                                 <input class="form-control" type="text" name="telefone" placeholder="Telefone" required>
                             </div>
-                            <button type="submit" class='btn btn-success m-2'>ADICIONAR</button>
+                            <div class="text-end">
+                                <button type="submit" class='btn btn-success m-2'>ADICIONAR</button>
+                            </div>               
                         </form>
                     </div>
                 </div>
@@ -76,12 +78,12 @@ $linha = 0;
                                 EMAIL: <?= htmlspecialchars($contato['email']) ?><br>
                                 TELEFONE: <?= htmlspecialchars($contato['telefone']) ?>
                             </h5>
-                            <div class="row justify-content-md-end">
+                            <div class="row justify-content-md-end px-4">
                                 <div class="col-md-2">
                                     <a href="./edit.php?id=<?= $contato['id'] ?>" class="btn btn-warning mb-1 mt-1">EDITAR</a>
                                 </div>
                                 <div class="col-md-2">
-                                    <a href="/controllers/ContactController.php?action=delete&id=<?= $contato['id'] ?>" class="btn btn-danger mb-1 mt-1">excluir</a>
+                                    <a href="/controllers/ContactController.php?action=delete&id=<?= $contato['id'] ?>" class="btn btn-danger mb-1 mt-1">EXCLUIR</a>
                                 </div>
                             </div>
                         </div>
@@ -94,6 +96,11 @@ $linha = 0;
         </div>
     </main>
 
+    <footer>
+        <div class="container-fluid bg-dark text-light text-center p-4 mt-4">
+            <h6>@DANIEL HENRIQUE ALVES BICALHO DIAS - 2024</h6>
+        </div>
+    </footer>
 </body>
 
 </html>
